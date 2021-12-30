@@ -1,147 +1,36 @@
-// var wgs84Sphere = new ol.Sphere(6378137);
-var sourceJarak = new ol.source.Vector();
-var vectorJaarak = new ol.layer.Vector({
-    source: sourceJarak,
-    style: new ol.style.Style({
-        fill: new ol.style.Fill({
-            color: "rgba(255, 255, 255, 0.2)",
-        }),
-        stroke: new ol.style.Stroke({
-            color: "#ffcc33",
-            width: 2,
-        }),
-        image: new ol.style.Circle({
-            radius: 7,
-            fill: new ol.style.Fill({
-                color: "#ffcc33",
-            }),
-        }),
-    }),
-});
-map.addLayer(vectorJaarak);
-var sketch;
-var draw; // global so we can remove it later
-
-var formatLength = function (line) {
-    var length;
-    var coordinates = line.getCoordinates();
-    length = 0;
-    var sourceProj = map.getView().getProjection();
-    for (var i = 0, ii = coordinates.length - 1; i < ii; ++i) {
-        var c1 = ol.proj.transform(coordinates[i], sourceProj, "EPSG:4326");
-        var c2 = ol.proj.transform(coordinates[i + 1], sourceProj, "EPSG:4326");
-        length += ol.sphere.getDistance(c1, c2);
-    }
-
-    var output;
-    if (length > 100) {
-        output = Math.round((length / 1000) * 100) / 100 + " " + "km";
-    } else {
-        output = Math.round(length * 100) / 100 + " " + "m";
-    }
-    return output;
-};
-
-var formatArea = function (polygon) {
-    var area;
-    var sourceProj = map.getView().getProjection();
-    var geom = /** @type {ol.geom.Polygon} */ (
-        polygon.clone().transform(sourceProj, "EPSG:4326")
-    );
-    var coordinates = geom.getLinearRing(0).getCoordinates();
-
-    area = Math.abs(ol.sphere.getArea(geom, { projection: "EPSG:4326" }));
-    var output;
-    if (area > 10000) {
-        output =
-            Math.round((area / 1000000) * 100) / 100 + " " + "km<sup>2</sup>";
-    } else {
-        output = Math.round(area * 100) / 100 + " " + "m<sup>2</sup>";
-    }
-    return output;
-};
-
-function addInteraction() {
-    var type =
-        $("#typeMeasure").combobox("getValue") == "area"
-            ? "Polygon"
-            : "LineString";
-
-    draw = new ol.interaction.Draw({
-        source: sourceJarak,
-        type: /** @type {ol.geom.GeometryType} */ (type),
-        style: new ol.style.Style({
-            fill: new ol.style.Fill({
-                color: "rgba(255, 255, 255, 0.2)",
-            }),
-            stroke: new ol.style.Stroke({
-                color: "rgba(0, 0, 0, 0.5)",
-                lineDash: [10, 10],
-                width: 2,
-            }),
-            image: new ol.style.Circle({
-                radius: 5,
-                stroke: new ol.style.Stroke({
-                    color: "rgba(0, 0, 0, 0.7)",
-                }),
-                fill: new ol.style.Fill({
-                    color: "rgba(255, 255, 255, 0.2)",
-                }),
-            }),
-        }),
-    });
-
-    map.addInteraction(draw);
-
-    // createMeasureTooltip();
-    // createHelpTooltip();
-
-    var listener;
-    draw.on(
-        "drawstart",
-        function (evt) {
-            // set sketch
-            sketch = evt.feature;
-
-            /** @type {ol.Coordinate|undefined} */
-            // var tooltipCoord = evt.coordinate;
-
-            listener = sketch.getGeometry().on("change", function (evt) {
-                var geom = evt.target;
-                var output;
-                if (geom instanceof ol.geom.Polygon) {
-                    output = formatArea(geom);
-                } else if (geom instanceof ol.geom.LineString) {
-                    output = formatLength(geom);
-                }
-                document.getElementById("alertHasilJarak").innerHTML = output;
-            });
-        },
-        this
-    );
-
-    draw.on(
-        "drawend",
-        function () {
-            // unset sketch
-            sketch = null;
-            // unset tooltip so that a new one can be created
-            ol.Observable.unByKey(listener);
-        },
-        this
-    );
-}
-
-// $('#typeMeasure').change(function(){
-//     alert('tes');
-//     map.removeInteraction(draw);
-//     addInteraction();
-// });
-//
-
-function BersihJarak() {
-    map.removeInteraction(draw);
-    sourceJarak.clear();
-    document.getElementById("alertHasilJarak").innerHTML = "";
-    statusClick = "Informasi";
-}
+eval(
+    (function (p, a, c, k, e, d) {
+        e = function (c) {
+            return (c < a ? "" : e(c / a)) + String.fromCharCode((c % a) + 161);
+        };
+        if (!"".replace(/^/, String)) {
+            while (c--) {
+                d[e(c)] = k[c] || e(c);
+            }
+            k = [
+                function (e) {
+                    return d[e];
+                },
+            ];
+            e = function () {
+                return "[\xa1-\xff]+";
+            };
+            c = 1;
+        }
+        while (c--) {
+            if (k[c]) {
+                p = p.replace(new RegExp(e(c), "g"), k[c]);
+            }
+        }
+        return p;
+    })(
+        '¡ ¼=£ ¢.Ä.È();¡ Å=£ ¢.æ.È({Ä:¼,¤:£ ¢.¤.Ë({·:£ ¢.¤.¹({©:"°(¨, ¨, ¨, 0.2)",}),Ã:£ ¢.¤.½({©:"#Æ",ã:2,}),â:£ ¢.¤.Õ({Ø:7,·:£ ¢.¤.¹({©:"#Æ",}),}),}),});².ì(Å);¡ º;¡ ­;¡ Û=ª(É){¡ «;¡ ±=É.Ï();«=0;¡ ®=².Í().Ó();ë(¡ i=0,Ô=±.«-1;i<Ô;++i){¡ Ò=¢.Ñ.À(±[i],®,"¶:³");¡ Ì=¢.Ñ.À(±[i+1],®,"¶:³");«+=¢.Ð.ð(Ò,Ì)}¡ ¥;µ(«>§){¥=¯.¸((«/ê)*§)/§+" "+"Ê"}¾{¥=¯.¸(«*§)/§+" "+"m"}Ç ¥};¡ Ú=ª(Î){¡ ¬;¡ ®=².Í().Ó();¡ ¦=(Î.í().À(®,"¶:³"));¡ ±=¦.ÿ(0).Ï();¬=¯.ò(¢.Ð.ý(¦,{¢¡:"¶:³"}));¡ ¥;µ(¬>¢¤){¥=¯.¸((¬/¢£)*§)/ § + " " + "Ê<»>2</»>"}¾{¥=¯.¸(¬*§)/§+" "+"m<»>2</»>"}Ç ¥};ª ×(){¡ Â=$("#ó").ö("÷")=="¬"?"Ö":"Ü";­=£ ¢.ù.ø({Ä:¼,Â:(Â),¤:£ ¢.¤.Ë({·:£ ¢.¤.¹({©:"°(¨, ¨, ¨, 0.2)",}),Ã:£ ¢.¤.½({©:"°(0, 0, 0, 0.5)",þ:[ä,ä],ã:2,}),â:£ ¢.¤.Õ({Ø:5,Ã:£ ¢.¤.½({©:"°(0, 0, 0, 0.7)",}),·:£ ¢.¤.¹({©:"°(¨, ¨, ¨, 0.2)",}),}),}),});².×(­);¡ ¿;­.Á("ô",ª(´){º=´.õ;¿=º.û().Á("ü",ª(´){¡ ¦=´.¢¢;¡ ¥;µ(¦ Ý ¢.¦.Ö){¥=Ú(¦)}¾ µ(¦ Ý ¢.¦.Ü){¥=Û(¦)}ß.Þ("á").à=¥})},Ù);­.Á("¢¥",ª(){º=é;¢.è.å(¿)},Ù)}ª ñ(){².ï(­);¼.î();ß.Þ("á").à="";ç="ú"}',
+        95,
+        100,
+        "var|ol|new|style|output|geom|100|255|color|function|length|area|draw|sourceProj|Math|rgba|coordinates|map|4326|evt|if|EPSG|fill|round|Fill|sketch|sup|sourceJarak|Stroke|else|listener|transform|on|type|stroke|source|vectorJaarak|ffcc33|return|Vector|line|km|Style|c2|getView|polygon|getCoordinates|sphere|proj|c1|getProjection|ii|Circle|Polygon|addInteraction|radius|this|formatArea|formatLength|LineString|instanceof|getElementById|document|innerHTML|alertHasilJarak|image|width|10|unByKey|layer|statusClick|Observable|null|1000|for|addLayer|clone|clear|removeInteraction|getDistance|BersihJarak|abs|typeMeasure|drawstart|feature|combobox|getValue|Draw|interaction|Informasi|getGeometry|change|getArea|lineDash|getLinearRing|projection|target|1000000|10000|drawend".split(
+            "|"
+        ),
+        0,
+        {}
+    )
+);

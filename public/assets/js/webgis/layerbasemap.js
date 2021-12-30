@@ -1,180 +1,36 @@
-var mapquest = new ol.layer.Tile({
-    source: new ol.source.OSM(),
-    visible: true,
-    title: "Open Street Map",
-    type: "basemap",
-});
-
-var googleLayerSatellite = new ol.layer.Tile({
-    title: "Google Satellite",
-    source: new ol.source.TileImage({
-        url: "http://khm0.googleapis.com/kh?v=717&hl=pl&&x={x}&y={y}&z={z}",
-    }),
-    visible: false,
-});
-// url: 'http://khm{0-3}.googleapis.com/kh?v=742&hl=pl&&x={x}&y={y}&z={z}'
-var googleLayerRoadmap = new ol.layer.Tile({
-    title: "Google Road Map",
-    source: new ol.source.TileImage({
-        url: "http://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
-        projection: "EPSG:3857",
-    }),
-    visible: false,
-});
-
-var googleLayerHybrid = new ol.layer.Tile({
-    title: "Google Satellite & Roads",
-    source: new ol.source.TileImage({
-        url: "http://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
-        projection: "EPSG:3857",
-    }),
-    visible: false,
-});
-
-var googleLayerTerrain = new ol.layer.Tile({
-    title: "Google Terrain",
-    source: new ol.source.TileImage({
-        url: "http://mt1.google.com/vt/lyrs=t&x={x}&y={y}&z={z}",
-        projection: "EPSG:3857",
-    }),
-    visible: false,
-});
-
-var googleLayerHybrid2 = new ol.layer.Tile({
-    title: "Google Terrain & Roads",
-    source: new ol.source.TileImage({
-        url: "http://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}",
-        projection: "EPSG:3857",
-    }),
-    visible: false,
-});
-
-var googleLayerOnlyRoad = new ol.layer.Tile({
-    title: "Google Road without Building",
-    source: new ol.source.TileImage({
-        url: "http://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}",
-        projection: "EPSG:3857",
-    }),
-    visible: false,
-});
-
-//BEGIN SETTING LAYER BINGMAP
-var bingmapsjalan = new ol.layer.Tile({
-    source: new ol.source.BingMaps({
-        key: "AuTA6PnAI3n8Bnd5w4NfxcPSPwx5yITWk6JAum3AO8bSU1LgKAvDuEGZOMRFqDQL",
-        imagerySet: "Road",
-    }),
-    visible: false,
-    title: "Bing Roads",
-});
-//END SETTING LAYER BINGMAP
-
-//BEGIN SETTING LAYER BINGMAP
-var bingmaps = new ol.layer.Tile({
-    source: new ol.source.BingMaps({
-        key: "AuTA6PnAI3n8Bnd5w4NfxcPSPwx5yITWk6JAum3AO8bSU1LgKAvDuEGZOMRFqDQL",
-        imagerySet: "Aerial",
-    }),
-    visible: false,
-    title: "Bing Satellite",
-});
-//END SETTING LAYER BINGMAP
-
-//BEGIN SETTING LAYER BINGMAP
-var bingmapslabel = new ol.layer.Tile({
-    source: new ol.source.BingMaps({
-        key: "AuTA6PnAI3n8Bnd5w4NfxcPSPwx5yITWk6JAum3AO8bSU1LgKAvDuEGZOMRFqDQL",
-        imagerySet: "AerialWithLabels",
-    }),
-    visible: false,
-    title: "Bing Satellite & Roads",
-});
-//END SETTING LAYER BINGMAP
-
-var cartoDbVoyager = new ol.layer.Tile({
-    source: new ol.source.XYZ({
-        url: "http://{1-4}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png",
-    }),
-    visible: false,
-    title: "cartoDbVoyager",
-});
-
-var cartoDbPositron = new ol.layer.Tile({
-    source: new ol.source.XYZ({
-        url: "http://{1-4}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png",
-    }),
-    visible: false,
-    title: "cartoDbPositron",
-});
-
-var cartoDbDarkMatter = new ol.layer.Tile({
-    source: new ol.source.XYZ({
-        url: "http://{1-4}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png",
-    }),
-    visible: false,
-    title: "cartoDbDarkMatter",
-});
-
-//BEGIN SETTING LAYER ESRI
-var esri = new ol.layer.Tile({
-    source: new ol.source.XYZ({
-        attributions:
-            'Tile &copy; <a href="http://services.arcgisonline.com/ArcGIS/' +
-            'rest/services/World_Topo_Map/MapServer">ArcGIS</a>',
-        url:
-            "http://server.arcgisonline.com/ArcGIS/rest/services/" +
-            "World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
-    }),
-    visible: false,
-    title: "esri",
-});
-//END SETTING LAYER ESRI
-
-//BEGIN SETTING LAYER STAMEN
-var stamen = new ol.layer.Group({
-    layers: [
-        new ol.layer.Tile({
-            source: new ol.source.Stamen({
-                layer: "watercolor",
-            }),
-        }),
-        new ol.layer.Tile({
-            source: new ol.source.Stamen({
-                layer: "terrain-labels",
-            }),
-        }),
-    ],
-    visible: false,
-    title: "stamen",
-});
-//END SETTING LAYER STAMEN
-
-//Awal Setting penyajian basemap
-function basemap(layername) {
-    var name;
-    map.getLayers()
-        .getArray()
-        .forEach(function (e) {
-            name = e.get("title");
-            if (
-                name == "Open Street Map" ||
-                name == "Google Satellite" ||
-                name == "Google Road Map" ||
-                name == "Google Satellite & Roads" ||
-                name == "Google Terrain" ||
-                name == "Google Terrain & Roads" ||
-                name == "Google Road without Building" ||
-                name == "Bing Roads" ||
-                name == "Bing Satellite" ||
-                name == "Bing Satellite & Roads" ||
-                name == "cartoDbVoyager" ||
-                name == "cartoDbPositron" ||
-                name == "cartoDbDarkMatter" ||
-                name == "esri" ||
-                name == "stamen"
-            ) {
-                e.setVisible(name == layername);
+eval(
+    (function (p, a, c, k, e, d) {
+        e = function (c) {
+            return (c < a ? "" : e(c / a)) + String.fromCharCode((c % a) + 161);
+        };
+        if (!"".replace(/^/, String)) {
+            while (c--) {
+                d[e(c)] = k[c] || e(c);
             }
-        });
-}
-//Akhir Setting penyajian basemap
+            k = [
+                function (e) {
+                    return d[e];
+                },
+            ];
+            e = function () {
+                return "[\xa1-\xff]+";
+            };
+            c = 1;
+        }
+        while (c--) {
+            if (k[c]) {
+                p = p.replace(new RegExp(e(c), "g"), k[c]);
+            }
+        }
+        return p;
+    })(
+        '¨ Þ=¡ ¢.¤.¦({£:¡ ¢.£.ß(),©:Ý,§:"Ð Ñ »",Ü:"×",});¨ Ú=¡ ¢.¤.¦({§:"« °",£:¡ ¢.£.²({®:"¬://Û.à.­/á?v=æ&ç=å&&x={x}&y={y}&z={z}",}),©:ª,});¨ Ù=¡ ¢.¤.¦({§:"« ¸ »",£:¡ ¢.£.²({®:"¬://³.µ.­/´/·=m&x={x}&y={y}&z={z}",º:"¹:¶",}),©:ª,});¨ ä=¡ ¢.¤.¦({§:"« ° & ¯",£:¡ ¢.£.²({®:"¬://³.µ.­/´/·=y&x={x}&y={y}&z={z}",º:"¹:¶",}),©:ª,});¨ â=¡ ¢.¤.¦({§:"« ¼",£:¡ ¢.£.²({®:"¬://³.µ.­/´/·=t&x={x}&y={y}&z={z}",º:"¹:¶",}),©:ª,});¨ ã=¡ ¢.¤.¦({§:"« ¼ & ¯",£:¡ ¢.£.²({®:"¬://³.µ.­/´/·=p&x={x}&y={y}&z={z}",º:"¹:¶",}),©:ª,});¨ è=¡ ¢.¤.¦({§:"« ¸ Ò Ó",£:¡ ¢.£.²({®:"¬://³.µ.­/´/·=r&x={x}&y={y}&z={z}",º:"¹:¶",}),©:ª,});¨ ¢¢=¡ ¢.¤.¦({£:¡ ¢.£.Æ({Å:"É",Ì:"¸",}),©:ª,§:"± ¯",});¨ ú=¡ ¢.¤.¦({£:¡ ¢.£.Æ({Å:"É",Ì:"ù",}),©:ª,§:"± °",});¨ ø=¡ ¢.¤.¦({£:¡ ¢.£.Æ({Å:"É",Ì:"÷",}),©:ª,§:"± ° & ¯",});¨ È=¡ ¢.¤.¦({£:¡ ¢.£.½({®:"¬://{1-4}.À.Ê.­/Ç/û/{z}/{x}/{y}.Ä",}),©:ª,§:"È",});¨ Â=¡ ¢.¤.¦({£:¡ ¢.£.½({®:"¬://{1-4}.À.Ê.­/Ç/ü/{z}/{x}/{y}.Ä",}),©:ª,§:"Â",});¨ ¾=¡ ¢.¤.¦({£:¡ ¢.£.½({®:"¬://{1-4}.À.Ê.­/Ç/¢¡/{z}/{x}/{y}.Ä",}),©:ª,§:"¾",});¨ ¿=¡ ¢.¤.¦({£:¡ ¢.£.½({ÿ:\'¦ &é; <a þ="¬://Á.Í.­/Ë/\'+\'Ø/Á/Õ/Ö">Ë</a>\',®:"¬://ö.Í.­/Ë/Ø/Á/"+"Õ/Ö/õ/{z}/{y}/{x}",}),©:ª,§:"¿",});¨ Ã=¡ ¢.¤.î({í:[¡ ¢.¤.¦({£:¡ ¢.£.Ï({¤:"ì",}),}),¡ ¢.¤.¦({£:¡ ¢.£.Ï({¤:"ê-ë",}),}),],©:ª,§:"Ã",});Ô ×(Î){¨ ¥;ï.ð().ô().ó(Ô(e){¥=e.ò("§");ñ(¥=="Ð Ñ »"||¥=="« °"||¥=="« ¸ »"||¥=="« ° & ¯"||¥=="« ¼"||¥=="« ¼ & ¯"||¥=="« ¸ Ò Ó"||¥=="± ¯"||¥=="± °"||¥=="± ° & ¯"||¥=="È"||¥=="Â"||¥=="¾"||¥=="¿"||¥=="Ã"){e.ý(¥==Î)}})}',
+        95,
+        97,
+        "new|ol|source|layer|name|Tile|title|var|visible|false|Google|http|com|url|Roads|Satellite|Bing|TileImage|mt1|vt|google|3857|lyrs|Road|EPSG|projection|Map|Terrain|XYZ|cartoDbDarkMatter|esri|basemaps|services|cartoDbPositron|stamen|png|key|BingMaps|rastertiles|cartoDbVoyager|AuTA6PnAI3n8Bnd5w4NfxcPSPwx5yITWk6JAum3AO8bSU1LgKAvDuEGZOMRFqDQL|cartocdn|ArcGIS|imagerySet|arcgisonline|layername|Stamen|Open|Street|without|Building|function|World_Topo_Map|MapServer|basemap|rest|googleLayerRoadmap|googleLayerSatellite|khm0|type|true|mapquest|OSM|googleapis|kh|googleLayerTerrain|googleLayerHybrid2|googleLayerHybrid|pl|717|hl|googleLayerOnlyRoad|copy|terrain|labels|watercolor|layers|Group|map|getLayers|if|get|forEach|getArray|tile|server|AerialWithLabels|bingmapslabel|Aerial|bingmaps|voyager_labels_under|light_all|setVisible|href|attributions|dark_all|bingmapsjalan".split(
+            "|"
+        ),
+        0,
+        {}
+    )
+);

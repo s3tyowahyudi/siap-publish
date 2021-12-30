@@ -1,156 +1,36 @@
-//Awal style untuk layer vektor1
-var Style2 = new ol.style.Style({
-    stroke: new ol.style.Stroke({
-        color: "cyan",
-        width: 10,
-    }),
-    fill: new ol.style.Fill({
-        color: "rgba(255, 0, 0, 0.5)",
-    }),
-    image: new ol.style.Circle({
-        radius: 7,
-        stroke: new ol.style.Stroke({
-            color: "cyan",
-            width: 5,
-        }),
-        fill: new ol.style.Fill({
-            color: "rgba(255, 0, 0, 0.5)",
-        }),
-    }),
-});
-
-var iconStyle = new ol.style.Style({
-    image: new ol.style.Icon(
-        /** @type {module:ol/style/Icon~Options} */ ({
-            anchor: [12, 12],
-            anchorXUnits: "pixels",
-            anchorYUnits: "pixels",
-            src: base_url + "/assets/img/marker_home24.png",
-        })
-    ),
-});
-
-/*================================================================
-    Layer batas_admin
-================================================================== */
-var lyrBatasDesa = new ol.layer.Tile({
-    source: new ol.source.TileWMS({
-        title: "Batas Desa",
-        url: base_url_wms + "/geoserver/wms",
-        params: {
-            LAYERS: "siap:admin_desa",
-            TILED: true,
-        },
-        serverType: "geoserver",
-    }),
-    visible: false,
-});
-map.addLayer(lyrBatasDesa);
-
-/*================================================================
-    Layer sungai
-================================================================== */
-var lyrSungai = new ol.layer.Tile({
-    source: new ol.source.TileWMS({
-        title: "sungai",
-        url: base_url_wms + "/geoserver/wms",
-        params: {
-            LAYERS: "siap:sungai",
-            TILED: true,
-        },
-        serverType: "geoserver",
-    }),
-    visible: true,
-});
-map.addLayer(lyrSungai);
-
-/*================================================================
-    Layer Sta
-================================================================== */
-var lyrSta = new ol.layer.Tile({
-    source: new ol.source.TileWMS({
-        title: "sta",
-        url: base_url_wms + "/geoserver/wms",
-        params: {
-            LAYERS: "siap:sta",
-            TILED: true,
-        },
-        serverType: "geoserver",
-    }),
-    visible: false,
-});
-map.addLayer(lyrSta);
-
-/*================================================================
-    Layer Bangunan garis
-================================================================== */
-var lyrBangunan_garis = new ol.layer.Tile({
-    source: new ol.source.TileWMS({
-        title: "Bangunan Garis",
-        url: base_url_wms + "/geoserver/wms",
-        params: {
-            LAYERS: "siap:bangunan_garis",
-            TILED: true,
-        },
-        serverType: "geoserver",
-    }),
-    visible: true,
-});
-map.addLayer(lyrBangunan_garis);
-
-/*================================================================
-    Layer Bangunan titik
-================================================================== */
-var lyrBangunan = new ol.layer.Tile({
-    source: new ol.source.TileWMS({
-        title: "Bangunan Titik",
-        url: base_url_wms + "/geoserver/wms",
-        params: {
-            LAYERS: "siap:bangunan",
-            TILED: true,
-        },
-        serverType: "geoserver",
-    }),
-    visible: true,
-});
-map.addLayer(lyrBangunan);
-var vectorSource1 = new ol.source.Vector();
-var lvector1 = new ol.layer.Vector({
-    source: vectorSource1,
-    style: Style2,
-});
-map.addLayer(lvector1);
-
-var vectorSource = new ol.source.Vector();
-var lvector = new ol.layer.Vector({
-    source: vectorSource,
-    style: Style2,
-    visible: true,
-});
-map.addLayer(lvector);
-
-var vectorTerpilihSource = new ol.source.Vector();
-var lvectorTerpilih = new ol.layer.Vector({
-    source: vectorTerpilihSource,
-    style: Style2,
-    visible: false,
-});
-map.addLayer(lvectorTerpilih);
-
-function ZoomTo() {
-    var ViewExtent = vectorSource.getExtent();
-    view.fit(ViewExtent, map.getSize());
-}
-
-function ZoomTo1() {
-    var ViewExtent = vectorSource1.getExtent();
-    view.fit(ViewExtent, map.getSize());
-}
-
-var lyrUploadSource = new ol.source.Vector();
-var lyrUpload = new ol.layer.Vector({
-    source: lyrUploadSource,
-    // style: Style2,
-    visible: true,
-});
-map.addLayer(lyrUpload);
+eval(
+    (function (p, a, c, k, e, d) {
+        e = function (c) {
+            return (c < a ? "" : e(c / a)) + String.fromCharCode((c % a) + 161);
+        };
+        if (!"".replace(/^/, String)) {
+            while (c--) {
+                d[e(c)] = k[c] || e(c);
+            }
+            k = [
+                function (e) {
+                    return d[e];
+                },
+            ];
+            e = function () {
+                return "[\xa1-\xff]+";
+            };
+            c = 1;
+        }
+        while (c--) {
+            if (k[c]) {
+                p = p.replace(new RegExp(e(c), "g"), k[c]);
+            }
+        }
+        return p;
+    })(
+        '¤ ¹=¢ ¡.¦.Ì({Ç:¢ ¡.¦.Æ({¸:"Å",Ã:Ý,}),Ä:¢ ¡.¦.È({¸:"É(Â, 0, 0, 0.5)",}),Ë:¢ ¡.¦.ã({ß:7,Ç:¢ ¡.¦.Æ({¸:"Å",Ã:5,}),Ä:¢ ¡.¦.È({¸:"É(Â, 0, 0, 0.5)",}),}),});¤ Þ=¢ ¡.¦.Ì({Ë:¢ ¡.¦.â(({ó:[Ê,Ê],ä:"Î",í:"Î",ï:ð+"/ò/ñ/ì.ë",})),});¤ À=¢ ¡.©.³({£:¢ ¡.£.²({µ:"æ å",®:­+"/¨/±",¯:{°:"´:ç",·:§,},¶:"¨",}),¬:»,});¥.ª(À);¤ ¾=¢ ¡.©.³({£:¢ ¡.£.²({µ:"Á",®:­+"/¨/±",¯:{°:"´:Á",·:§,},¶:"¨",}),¬:§,});¥.ª(¾);¤ Í=¢ ¡.©.³({£:¢ ¡.£.²({µ:"¿",®:­+"/¨/±",¯:{°:"´:¿",·:§,},¶:"¨",}),¬:»,});¥.ª(Í);¤ Ü=¢ ¡.©.³({£:¢ ¡.£.²({µ:"Ï î",®:­+"/¨/±",¯:{°:"´:é",·:§,},¶:"¨",}),¬:§,});¥.ª(Ü);¤ Ó=¢ ¡.©.³({£:¢ ¡.£.²({µ:"Ï ê",®:­+"/¨/±",¯:{°:"´:è",·:§,},¶:"¨",}),¬:§,});¥.ª(Ó);¤ ½=¢ ¡.£.«();¤ Ö=¢ ¡.©.«({£:½,¦:¹,});¥.ª(Ö);¤ ¼=¢ ¡.£.«();¤ Õ=¢ ¡.©.«({£:¼,¦:¹,¬:§,});¥.ª(Õ);¤ Ô=¢ ¡.£.«();¤ Ð=¢ ¡.©.«({£:Ô,¦:¹,¬:»,});¥.ª(Ð);Ñ á(){¤ º=¼.Ò();Ø.×(º,¥.Û())}Ñ à(){¤ º=½.Ò();Ø.×(º,¥.Û())}¤ Ù=¢ ¡.£.«();¤ Ú=¢ ¡.©.«({£:Ù,¬:§,});¥.ª(Ú);',
+        83,
+        83,
+        "ol|new|source|var|map|style|true|geoserver|layer|addLayer|Vector|visible|base_url_wms|url|params|LAYERS|wms|TileWMS|Tile|siap|title|serverType|TILED|color|Style2|ViewExtent|false|vectorSource|vectorSource1|lyrSungai|sta|lyrBatasDesa|sungai|255|width|fill|cyan|Stroke|stroke|Fill|rgba|12|image|Style|lyrSta|pixels|Bangunan|lvectorTerpilih|function|getExtent|lyrBangunan|vectorTerpilihSource|lvector|lvector1|fit|view|lyrUploadSource|lyrUpload|getSize|lyrBangunan_garis|10|iconStyle|radius|ZoomTo1|ZoomTo|Icon|Circle|anchorXUnits|Desa|Batas|admin_desa|bangunan|bangunan_garis|Titik|png|marker_home24|anchorYUnits|Garis|src|base_url|img|assets|anchor".split(
+            "|"
+        ),
+        0,
+        {}
+    )
+);
