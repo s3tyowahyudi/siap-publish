@@ -1,0 +1,227 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-left: 0;
+    margin-right: 0;
+    overflow-y: hidden;
+    overflow-x: show;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+#logoMap {
+    position: absolute;
+}
+
+#user {
+    position: absolute;
+    margin-left: 155px;
+}
+
+.nav-user-photo {
+    margin: -4px 8px 0 0;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    max-width: 40px;
+}
+
+.btnMap {
+    width: 31px;
+    height: 31px;
+    box-shadow: 0px 10px 14px -7px #276873;
+    background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    background-color: #189ab4;
+    border-radius: 50%;
+    display: flex;
+    cursor: pointer;
+    color: #ffffff !important;
+    font-family: Arial;
+    font-size: 14px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+.btnMap:hover {
+    background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+    background-color: #408c99;
+}
+.btnMap:active {
+    position: relative;
+    top: 1px;
+}
+
+#toolbar {
+    position: absolute;
+    top: 55px;
+    left: 25px;
+    height: auto;
+    width: 40px;
+}
+
+.radio-img {
+    width: 100%;
+}
+
+.radio-img > input {
+    display: none;
+}
+.radio-img > .base-image {
+    cursor: pointer;
+    border: 1px solid #72a4b9;
+    width: 100%;
+}
+.radio-img > input:checked + .base-image {
+    border: 2px solid #f58d06;
+}
+.base-image {
+    opacity: 0.8;
+    width: 100px;
+    height: 60px;
+    background-position: center center;
+    background-color: gray;
+    background-size: cover;
+    display: inline-block;
+    border-radius: 7px;
+}
+.base-image:hover {
+    opacity: 1;
+}
+
+.dx-overlay-wrapper {
+    z-index: 14000 !important;
+}
+
+#mouseposisi {
+    background-color: #fff;
+    position: absolute;
+    bottom: 5px;
+    right: 45%;
+    margin: 1px;
+    border: 1px solid #bbb;
+    text-overflow: ellipsis;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    width: 200px;
+    transition: all 0.5s linear;
+    display: none;
+}
+
+.scale-line {
+    position: absolute;
+    bottom: 35px;
+    right: 250px;
+    transition: all 0.5s linear;
+}
+
+#longitude {
+    background-color: rgba(255, 255, 255, 1);
+    position: absolute;
+    width: 100px;
+    height: 22px;
+    bottom: 5px;
+    right: 95px;
+    margin: 1px;
+    border: 1px solid #bbb;
+    text-overflow: ellipsis;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#latitude {
+    background-color: rgba(255, 255, 255, 1);
+    position: absolute;
+    width: 100px;
+    bottom: 5px;
+    height: 22px;
+    right: 200px;
+    margin: 1px;
+    border: 1px solid #bbb;
+    text-overflow: ellipsis;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn1 {
+    border-radius: 4px;
+    -webkit-box-shadow: 3px 3px 7px #666666;
+    -moz-box-shadow: 3px 3px 7px #666666;
+    box-shadow: 3px 3px 7px #666666;
+    font-family: Arial;
+    color: black;
+    font-size: 12px;
+    padding: 2px;
+    background: #59bfff;
+    border: solid #1f628d 1px;
+    text-decoration: none;
+}
+
+.btn1:hover {
+    background: #468dcf;
+    text-decoration: none;
+}
+
+#cmdGo {
+    position: absolute;
+    bottom: 5px;
+    right: 55px;
+}
+
+#cmdClear {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+
+#nav-search {
+    position: absolute;
+    width: 50px !important;
+    top: 3px;
+    right: 10px;
+}
+
+.info-label {
+    /* border: solid 1px #d5d5d5; */
+    border-style: solid;
+    border-width: 1px 1px 0 1px;
+    border-color: #d5d5d5;
+    background-color: #edf3f4;
+    color: #336199;
+    width: 100%;
+    padding: 4px 10px 6px 4px;
+    width: 100%;
+}
+
+.info-value {
+    border: solid 1px #d5d5d5;
+    padding: 5px 5px 6px;
+    background-color: #fff;
+    width: 100%;
+    margin-bottom: 15px;
+    word-wrap: break-word;
+}
+@media (min-width: 992px) {
+    #cmdcardInfromasi {
+        top: 10px !important;
+    }
+
+    #cardInformasi {
+        left: -408px;
+        width: 408px;
+    }
+
+    #mouseposisi {
+        display: block;
+    }
+
+    #nav-search {
+        width: 20% !important;
+    }
+}
