@@ -28,7 +28,7 @@
                     <div>
                         <label>Legenda</label>
                         <p>
-                            <img src="http://202.157.187.108:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=siap:bangunan">
+                            <img src="http://123.100.226.201:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=siap:bangunan">
                         </p>
                         
                     </div>
@@ -65,7 +65,7 @@
                     <div>
                         <label>Legenda</label>
                         <p>
-                            <img src="http://202.157.187.108:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=siap:bangunan_garis">
+                            <img src="http://123.100.226.201:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=siap:bangunan_garis">
                         </p>
                         
                     </div>
@@ -102,7 +102,7 @@
                     <div>
                         <label>Legenda</label>
                         <p>
-                            <img src="http://202.157.187.108:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=siap:sta">
+                            <img src="http://123.100.226.201:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=siap:sta">
                         </p>
                         
                     </div>
@@ -139,7 +139,7 @@
                     <div>
                         <label>Legenda</label>
                         <p>
-                            <img src="http://202.157.187.108:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=siap:sungai">
+                            <img src="http://123.100.226.201:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=siap:sungai">
                         </p>
                         
                     </div>
