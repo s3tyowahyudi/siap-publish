@@ -51,13 +51,58 @@
                         <i class="ace-icon fa fa-circle white"></i>
                     </li>
 
-                    <li>
-                        <a href="#">
-                            <span class="light-green">Login</span> 
-                            &nbsp;
-                            <i class="fa fa-user bigger-110 light-green"></i>
-                        </a>
-                    </li>
+                    @if (Auth::check())
+                        <li class="light-blue dropdown-modal">
+                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                                {{-- <img class="nav-user-photo" src="assets/ace/images/avatars/user.jpg" alt="Jason's Photo" /> --}}
+                                <span class="user-info">
+                                    {{ Auth::user()->nama }}
+                                </span>
+    
+                                <i class="ace-icon fa fa-caret-down"></i>
+                            </a>
+    
+                            <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                                <li>
+                                    <a href="{{ url('settingUser')  }}">
+                                        <i class="ace-icon fa fa-cog"></i>
+                                        Settings
+                                    </a>
+                                </li>
+                                @if (Auth::user()->level=="Administrator")
+                                    <li>
+                                        <a href="{{ url('penggunaBaru')  }}">
+                                            <i class="ace-icon fa fa-user"></i>
+                                            Add User
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('dataUser')  }}">
+                                            <i class="ace-icon fa fa-users"></i>
+                                            Data User
+                                        </a>
+                                    </li>
+                                @endif
+    
+                                <li class="divider"></li>
+    
+                                <li>
+                                    <a href="keluar">
+                                        <i class="ace-icon fa fa-power-off"></i>
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @else
+                        <li>
+                            <a href="login">
+                                {{-- <i class="ace-icon fa fa-envelope"></i> --}}
+                                {{-- <i class="ace-icon fa fa-key"></i> --}}
+                                Login
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>

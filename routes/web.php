@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\webgisController;
 use App\Http\Controllers\dokumenController;
+use App\Http\Controllers\userController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,3 +63,36 @@ route::get('dokumen',function(){
 route::get('showTabelFile',[dokumenController::class,'showTabelFIle']);
 route::post('uploadDokumen',[dokumenController::class,'uploadDokumen']);
 route::get('downloadDokumen',[dokumenController::class,'downloadDokumen']);
+
+Route::get('login',function(){
+    return view('login.index');
+});
+Route::post('login',[userController::class,'login']);
+Route::get('settingUser',function(){
+	if(Auth::check()){
+		return view ('login.settingUser');
+	}else{
+		return redirect('/');
+	}
+});
+Route::get('keluar',function(){
+    Session::flush();
+    return redirect('/');
+});
+Route::post('UpdateUser',[userController::class,'UpdateUser']);
+Route::get('penggunaBaru',function(){
+	if(Auth::check()){
+		return view ('login.penggunaBaru');
+	}else{
+		return redirect('/');
+	}
+});
+Route::post('addUser',[userController::class,'addUser']);
+Route::get('KonfirmNewUser',function(){
+    return view('login.KonfirmNewUser');
+});
+Route::get('dataUser', function(){
+    return view('login.dataUser');
+});
+Route::get('ShowTabelUser',[userController::class,'ShowTabel']);
+Route::post('deleteUser',[userController::class,'Delete']);
